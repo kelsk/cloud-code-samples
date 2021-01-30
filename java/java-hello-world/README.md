@@ -9,7 +9,7 @@ For details on how to use this sample as a template in Cloud Code, read the docu
 ### Table of Contents
 * [Getting Started with VS Code](#getting-started-with-vs-code)
 * [Getting Started with IntelliJ](#getting-started-with-intellij)
-* [Kubernetes Architecture Diagram](#kubernetes-diagram)
+* [Kubernetes Architecture Diagram](#kubernetes-architecture-diagram)
 * [Sign up for User Research](#sign-up-for-user-research)
 
 ---
