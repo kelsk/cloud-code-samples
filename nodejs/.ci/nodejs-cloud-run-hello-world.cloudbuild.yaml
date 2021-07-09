@@ -39,7 +39,7 @@ steps:
   - |
     gcloud run deploy $_SERVICE-$(cat _RND) \
      --image gcr.io/$PROJECT_ID/$_SERVICE:$COMMIT_SHA \
-     --region $_REGION --platform managed --no-allow-unauthenticated
+     --region $_REGION --platform managed --no-allow-unauthenticated \
      --service-account $_SERVICE_ACCOUNT
   dir: '${_SAMPLE_DIR}'
 
