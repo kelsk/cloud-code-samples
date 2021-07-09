@@ -10,7 +10,7 @@ describe('Hello World', () => {
     console.log(`    - Requesting GET ${url}/...`)
     const res = await request({
       url: url + '/',
-      headers: `Authorization: Bearer ${token}`,
+      headers: { "Authorization": "Bearer " + token },
       timeout: 5000,
     });
 
