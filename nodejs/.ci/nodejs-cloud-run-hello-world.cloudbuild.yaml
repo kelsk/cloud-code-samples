@@ -44,7 +44,7 @@ steps:
     gcloud run services add-iam-policy-binding $_SERVICE-$(cat _RND) \
      --region $_REGION --platform managed \
      --member serviceAccount:${_SERVICE_ACCOUNT} \
-     --role roles/run-invoker
+     --role roles/run.invoker
   dir: '${_SAMPLE_DIR}'
 
 - id: 'Get Cloud Run URL'
