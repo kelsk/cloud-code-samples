@@ -8,7 +8,7 @@ const token = process.env.TOKEN || 'no token provided';
 describe('Hello World', () => {
   it('can respond to an HTTP request', async () => {
     console.log(`    - Requesting GET ${url}/...`)
-    if (token == "no token provided") console.log('no token provided, uh oh!')
+    console.log(token)
     const res = await request({
       url: url + '/',
       headers: { "Authorization": "Bearer " + token },
