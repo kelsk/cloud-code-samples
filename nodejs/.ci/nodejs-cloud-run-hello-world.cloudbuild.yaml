@@ -65,7 +65,7 @@ steps:
   - '-c'
   - |
     get_id_token() {
-      gcloud auth print-identity-token)"
+      gcloud auth print-identity-token
     }
     echo $(get_id_token) > _id_token
   dir: '${_SAMPLE_DIR}'
