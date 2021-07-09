@@ -41,6 +41,9 @@ steps:
      --image gcr.io/$PROJECT_ID/$_SERVICE:$COMMIT_SHA \
      --region $_REGION --platform managed --no-allow-unauthenticated \
      --service-account $_SERVICE_ACCOUNT
+    gcloud run services --add-iam-policy-binding $_SERVICE-$(cat _RND) \
+     --member serviceAccount:${_SERVICE_ACCOUNT}
+     --role roles/run-invoker
   dir: '${_SAMPLE_DIR}'
 
 - id: 'Get Cloud Run URL'
@@ -69,10 +72,10 @@ steps:
     gcloud auth print-access-token
     get_id_token() {
       curl -X POST -H "content-type: application/json" \
-      -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-      -d "{\"audience\": \"$(cat _service_url)\"}" \
-      "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/${_SERVICE_ACCOUNT}:generateIdToken" | \
-      python3 -c "import sys, json; print(json.load(sys.stdin)['token'])"
+        -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+        -d "{\"audience\": \"$(cat _service_url)\"}" \
+        "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/${_SERVICE_ACCOUNT}:generateIdToken" | \
+        python3 -c "import sys, json; print(json.load(sys.stdin)['token'])"
     }
     echo $(get_id_token) > _id_token
   dir: '${_SAMPLE_DIR}'
@@ -101,7 +104,7 @@ steps:
 
 substitutions:
   _CLOUDSDK_VERSION: latest
-  _REGION: us-central1
+  _REGION: us-west1
   _SERVICE: nodejs-cloud-run-hello-world
   _SERVICE_ACCOUNT: cloud-run-hello-world-sa
   _SAMPLE_DIR: nodejs/nodejs-cloud-run-hello-world
