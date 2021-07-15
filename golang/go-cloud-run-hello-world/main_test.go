@@ -22,9 +22,9 @@ func TestService(t *testing.T) {
 	}
 
 	retryClient := retry.NewClient()
-	req, err := retry.NewRequest(http.MethodGet, url+"/", "")
+	req, err := retry.NewRequest(http.MethodGet, url+"/", nil)
 	if err != nil {
-		t.Fatalf("retry.NewClient: %v", err)
+		t.Fatalf("retry.NewRequest: %v", err)
 	}
 
 	token := os.Getenv("TOKEN")
