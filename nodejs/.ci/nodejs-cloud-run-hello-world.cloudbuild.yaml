@@ -68,9 +68,7 @@ steps:
   args:
   - '-c'
   - |
-    echo "Printing access token with service account..."
-    echo $_SERVICE_ACCOUNT
-    gcloud auth print-access-token
+    echo "Getting identity token..."
     get_id_token() {
       curl -X POST -H "content-type: application/json" \
         -H "Authorization: Bearer $(gcloud auth print-access-token)" \
@@ -107,5 +105,4 @@ substitutions:
   _CLOUDSDK_VERSION: latest
   _REGION: us-west1
   _SERVICE: nodejs-cloud-run-hello-world
-  _SERVICE_ACCOUNT: cloud-run-hello-world-sa
   _SAMPLE_DIR: nodejs/nodejs-cloud-run-hello-world
